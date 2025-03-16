@@ -1,0 +1,28 @@
+{
+    "name":"Test",
+    "description": "This is a discription. ",
+    "version": "0.1",
+    "manifest_version": 3,
+    "action": {   
+        "default_popup": "index.html",
+        "default_icon": "Temp.png"
+    },
+
+    "icons": {
+        "16": "images/Temp.png",
+        "32": "images/Temp.png",
+        "48": "images/Temp.png",
+        "128": "images/Temp.png"
+    },
+
+    "content_scripts": [
+        {
+            "js": ["scripts/content.js"],
+            "matches": [
+                "https://developer.chrome.com/docs/extensions/*",
+                "https://developer.chrome.com/docs/webstore/*"
+            ]
+        }
+    ]
+
+}
