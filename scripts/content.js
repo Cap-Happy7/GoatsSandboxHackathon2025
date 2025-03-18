@@ -1,22 +1,30 @@
-const article = document.querySelector("article");
+//get the body of the website
+const body = document.getElementsByTagName("body");
 
-// `document.querySelector` may return null if the selector doesn't match anything.
-if (article) {
-  const text = article.textContent;
-  const wordMatchRegExp = /[^\s]+/g; // Regular expression
-  const words = text.matchAll(wordMatchRegExp);
-  // matchAll returns an iterator, convert to array to get word count
-  const wordCount = [...words].length;
-  const readingTime = Math.round(wordCount / 200);
-  const badge = document.createElement("p");
-  // Use the same styling as the publish information in an article's header
-  badge.classList.add("color-secondary-text", "type--caption");
-  badge.textContent = `⏱️ ${readingTime} min read`;
+//create a new style sheet to modify content
+const sheet = new CSSStyleSheet();
 
-  // Support for API reference docs
-  const heading = article.querySelector("h1");
-  // Support for article docs with date
-  const date = article.querySelector("time")?.parentNode;
+//how to modify content
+//sheet.replaceSync("*{background-color: lightgrey;}");
 
-  (date ?? heading).insertAdjacentElement("afterend", badge);
+//apply sheet to body
+document.adoptedStyleSheets = [sheet];
+
+
+//get the contents of the website
+const content = document.getElementsByTagName("*");
+
+//loop through contents
+for(let i =0; i<content.length; i++){ 
+  //get content's current font size
+  var font = window.getComputedStyle(content[i], null).getPropertyValue('font-size');
+
+  //create a new style sheet to modify content
+  //const sheet = new CSSStyleSheet();
+
+  //how to modify content
+  sheet.replaceSync("*{background-color: pink; font-size: "+2+"px;}");
+
+  //apply sheet to content
+  content[i].adoptedStyleSheets = [sheet];
 }
