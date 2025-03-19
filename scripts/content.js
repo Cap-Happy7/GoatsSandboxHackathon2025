@@ -18,12 +18,13 @@ const content = document.getElementsByTagName("*");
 for(let i =0; i<content.length; i++){ 
   //get content's current font size
   var font = window.getComputedStyle(content[i], null).getPropertyValue('font-size');
+  content.innerHTML = font+"";
 
   //create a new style sheet to modify content
   //const sheet = new CSSStyleSheet();
 
-  //how to modify content
-  sheet.replaceSync("*{background-color: pink; font-size: "+2+"px;}");
+  //define how to modify content
+  sheet.replaceSync("*{background-color: pink; font-size: "+1.5+"rem;}");
 
   //apply sheet to content
   content[i].adoptedStyleSheets = [sheet];
